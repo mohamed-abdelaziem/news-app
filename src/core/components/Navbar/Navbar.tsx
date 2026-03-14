@@ -1,10 +1,12 @@
-import { useContext, useEffect } from "react"
-import { CategoryContext } from "../../Context/ChageCategory.context"
+import { useContext } from "react"
+import { CategoryContext, type CategoryContextType } from "../../Context/ChageCategory.context"
 
 
 export default function Navbar() {
 
-    const {category , setCategory} = useContext(CategoryContext);
+     const context = useContext(CategoryContext) as CategoryContextType;
+
+  const { setCategory } = context;
   return (
    <>
    <nav className="navbar navbar-expand-lg bg-secondary-subtle">

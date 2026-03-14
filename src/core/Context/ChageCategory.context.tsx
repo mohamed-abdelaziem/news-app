@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-type CategoryContextType = {
+export type CategoryContextType = {
   category: string;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
 };
