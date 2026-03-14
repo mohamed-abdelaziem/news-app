@@ -8,7 +8,7 @@ export default function News() {
     const categoryContext = useContext(CategoryContext);
     const [articles , setArticles] = useState<Article[]>([]);
     const [isLoading , setIsLoading] = useState<boolean>(false);
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey = "4e0b6ea325a28f1b172946eb043a8af2";
 
     
     useEffect(()=>{
@@ -20,13 +20,14 @@ export default function News() {
    async function getAllArticles(category:string){
     setIsLoading(true);
        if(category == 'all'){
-     const baseUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+     const baseUrl = `https://gnews.io/api/v4/top-headlines?category=general&apikey=${apiKey}`;
          const data = await axios.get<IResponeOfArticle>(baseUrl);
         const finalResposne = data.data;
         setArticles(finalResposne.articles);
+        console.log(finalResposne)
         setIsLoading(false);
        }else{
-        const baseUrl = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
+        const baseUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&apikey=${apiKey}`;
          const data = await axios.get<IResponeOfArticle>(baseUrl);
             if(data.status == 200){
                 const finalData = data.data;
